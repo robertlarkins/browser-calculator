@@ -1,0 +1,16 @@
+header {
+    background-color: #C3C8CD; /* #D5C4A1; */
+    width: 100%; /* 800px; */
+    height: 70px;
+    margin: 0 auto;
+    /*padding: 5px 0;*/
+    /*border: 2px solid #E0E0E0;*/
+    margin: 0 0 5px;
+}
+
+#headerContent {
+    margin: 0 auto;
+    width: 800px;
+}
+
+

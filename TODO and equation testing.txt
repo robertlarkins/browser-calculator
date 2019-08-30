@@ -1,0 +1,213 @@
+TODO:
+ - Find equation to produce: 'ERROR: Incorrect postfix equation. This should not happen. [ERR506]' If such
+   an equation exists. All error producing equations should have already been dealt with by this time.
+ - Error message width should be the same or less than the equation. If only a very long variable is entered,
+   parts of the error message are missing. Try and add padding to the control panel area
+   This could be done by maintaining the additional 20px at the end of the text_in, when it is shifted to the
+   answer line
+
+
+ - Attempt to shift the following code fragment to its own function: 
+            if ( fv_pattern.test( stack_token ) == true ) {
+
+                if ( stack_token in user_variables ) {
+                    stack_token = user_variables[stack_token]
+                        
+                } else if ( stack_token in base_variables ) {
+                    stack_token = base_variables[stack_token];
+                        
+                } else {
+                    // example equations: ---abc
+                    throw new ParseError('ERROR: \'' + stack_token + '\' is an unknown variable. [ERR503]', index_queue[ index_stack[index_stack.length-1] ]);
+                }
+            }
+
+
+ - Shift processEquation into process_equation.js, have it return a dict containing an error flag and 
+   the result. If error_flag = 0, then result is the answer (or is an empty array, if answer is suppressed).
+   Otherwise error_flag = 1, then the result is error message. The error would also need the array
+   containing the equation parts that errored.
+
+
+ - Make horizontal scrollbar shift in an intuitive manner with respect to the cursor/carat
+     - This will likely be done in update_textin()
+     - Using arrow keys, home and end respond far too slowly
+         - Make the custom event in keydown handle shift+arrow keys
+         - side_buffering doesn't handle selection using shift+arrow keys
+         - side_buffering doesn't handle selection by click and drag
+         - side_buffering doesn't handle caret movement by arrow keys, or the home and end keys
+     - clean up side buffering
+     
+       // This is in keyup, but is presently commented out. It responds too slowly for arrow key presses
+       switch (event.which) {
+           // an empty case drops down to the next case
+           case 35: // end
+           case 36: // home
+           case 37: // left arrow
+           case 38: // up arrow
+           case 39: // right arrow
+           case 40: side_buffering(); // down arrow
+       }
+
+
+ - Add a clear variable 
+
+ - Calculate Header Possible Links:
+       News, About, Search, Contact, Home, Login, Products and Services, Solutions, Support
+       Modular Computing Solutions
+
+ - Calculate Footer Possible Links:
+       About, Copyright, Contact, Terms and Conditions
+
+
+Major Tasks
+
+ - Pretty up GUI
+
+ - Flash corresponding opening parenthesis, bracket or brace when a close bracket is entered
+   If there is no open parenthesis, then highlight the close parenthesis
+   Highlight unknown functions or variables unless they are being assigned
+
+ - Expand equation processing to include:
+    - vectors and matrices
+    - clearing screen
+    - deleting variables
+    - suppressing output
+
+
+
+Equations Tests
+
+a=1
+a = 1
+=
+-
++
+*
+^
+sin(pi)
+abc
+pi
+(*3)
+(3*)
+(3*)4
+(1())
+(3)
+1+2*()
+()
+3(*4)
+(   )
+)(
+a=1  then  a(
+(-3)(^3)
+3(3)
+3(-3)
+(-3)*(^3)
+a=1  then  a=1
+a=3  then  2*a=8
+(b=2)+c=3
+(a=2)*(b=3)
+(1+2)3
+3(1+2)
+b*(b=2)
+blah()       should recognise that blah is not a known function
+atan2(sin(0),cos(pi))
+atan2(sin(0),cos(pi,0))
+sin()
+sin(1,2,3)
+sin(2)=2
+3=sin(a)
+undefined
+Infinity
+inf
+
+If the code allows middle of equation assignment then try these:
+a+b*((a=2)/(b=a))
+a=7  then  b=11  then  a+b*((a=2)/(b=a))
+a=1  then  a=1
+a=3  then  2*a=8
+(b=2)+c=3
+(a=2)*(b=3)
+(1+2)3
+3(1+2)
+b*(b=2)
+
+
+
+
+
+
+
+
+
+
+
+a=1
+
+1
+>>
+
+a = 1
+
+1
+>>
+
+(1+2)3
+
+Error: Fragmented equation (unexpected number or variable). [ERR002]
+>>
+
+3(3)
+
+Error: Fragmented equation (unexpected '(' parenthesis.). [ERR010]
+>>
+
+3(1+2)
+
+Error: Fragmented equation (unexpected '(' parenthesis.). [ERR010]
+>>
+
+sin()
+
+ERROR: The 'sin' function expects 1 argument. Not 0 arguments.
+>>
+
+sin(1,2,3)
+
+ERROR: The 'sin' function expects 1 argument. Not 3 arguments.
+>>
+
+atan2(sin(0),cos(pi,0))
+
+ERROR: The 'cos' function expects 1 argument. Not 2 arguments.
+>>
+
+sin(2)=2
+
+ERROR: Invalid assignment, (expected a variable). [ERR004]
+>>
+
+2=sin(a)
+
+ERROR: Invalid assignment, (expected a variable). [ERR004]
+>>
+
+3(-3)
+
+Error: Fragmented equation (unexpected '(' parenthesis.). [ERR010]
+>>
+
+a=1
+
+1
+>>
+
+a(
+
+Error: Fragmented equation (unexpected '(' parenthesis.). [ERR010]
+>>
+
+a
+
+1
+

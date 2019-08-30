@@ -1,0 +1,110 @@
+<!-- The head section -->
+
+<!-- This tag tells the browser that this is a HTML webpage -->
+<!DOCTYPE html>
+
+<!-- Describes the webpage -->
+<html>
+    <head>
+
+
+        <!-- This tells the browser to use appropriate encoding -->
+        <meta charset="utf-8">
+
+        <!-- Text that appears at the top of the browser window. It is crucial for SEO -->
+        <title> Robert's Javascript based Shuntyard Algorithm </title>
+
+        <!-- Meta tags used to describe the webpage -->
+        <meta name="description" content="A webpage for calculating an equation.">
+        <meta name="author" content="Robert Larkins">
+
+        <!-- Include external style files -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" href="footer.css">
+        
+        <!-- <script src="jquery-2.0.3.js"></script> -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <!-- Include external javascript files -->
+        <script src="script_using_jquery_2.js"></script>
+        <script src="process_equation.js"></script>
+        <script src="textarea-helper.js"></script>
+        
+        <!-- Include HTML Content -->
+        <script>
+            $(function(){
+                $("#headerContent").load("main_header.html"); 
+                $("#footerContent").load("main_footer.html"); 
+            });
+        </script>
+        
+    </head>
+
+    <!-- The visible page content -->
+    <body>
+
+        <div class="body_content_wrapper">
+    
+            <header>
+                <div id="headerContent"></div>
+            </header>            
+        
+            <div class="section_wrapper">
+                <div id="command_panel">
+                    <div class="panel_title">
+                        Command Panel
+                    </div>
+                    
+                    <div id="equation_area">
+                        
+                        <div id="answers"></div>
+                        
+                        <div id="equation_line">
+                        
+                            <div class="double_arrow">
+                                <span> >> </span>
+                            </div>
+                        
+                            <div id="expandingArea">
+                                <pre><span id="hidden_span"></span><br></pre>
+                                <textarea id="text_in"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div id="nappy"></div>
+                    </div>
+                </div>
+                
+                <div id="side_panel">
+                
+                    <div id="variable_panel">
+                        <div class="panel_title">
+                            User Variables
+                        </div>
+                        
+                        <div id="variable_list"></div>
+                    </div>
+                    
+                    <div id="history_panel">
+                        <div class="panel_title">
+                            Command History
+                        </div>
+                            
+                        <div id="command_history"></div>
+                    </div>
+                
+                </div>
+                
+            </div>
+            
+            <div class="footer_push"></div>
+        </div>
+            
+        <footer>
+            <div id="footerContent"></div>
+        </footer>
+        
+    </body>
+    
+</html>

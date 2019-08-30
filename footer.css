@@ -1,0 +1,13 @@
+footer, .footer_push{
+    height: 70px;
+}
+
+footer {
+    background-color: #F0F0FF;
+    width: 100%;
+}
+
+#footerContent {
+    margin: 0 auto;
+    width: 800px;
+}

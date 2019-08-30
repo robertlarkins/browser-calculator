@@ -1,0 +1,238 @@
+ * {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    background-color: white;    /*#E6E6FF;*/
+}
+
+
+.body_content_wrapper {
+    min-height: 100%;
+    margin: 0px auto -70px; /* the bottom margin is the negative value of the footer's height */
+    overflow: hidden;
+}
+
+.section_wrapper {
+    background-color: beige;
+    width: 800px;
+    margin: 0 auto;
+    display: block;
+    clear: both;
+    position: relative;
+    height: 650px;
+    border: 1px solid black;
+    /* padding: 0 0 30px; */
+}
+
+.console_line {
+    margin: 0;
+    white-space: nowrap;
+    float: left;
+    padding: 0 5px 0 5px;
+}
+
+.output {
+    margin: 10px 0 20px 0;
+    /*padding: 5px 0 5px 0;
+    border: 1px solid; */
+    /* background-color: pink; */
+}
+
+.variable_line, .output, .console_line, .error_output, .history_line {
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.error_output {
+    margin: 5px 0 15px 0;
+    color: red;
+    /* background-color: pink; */
+}
+
+.history_line {
+    /*padding: 5px 0 5px 0;
+    border: 1px solid; */
+    /* background-color: pink; */
+}
+
+.highlight {
+    background-color: pink;
+}
+
+#equation_input {
+    width:100%;
+    background-color:white;
+    border: 1px solid;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#console_input_line {
+    width:100%;
+}
+
+.panel_title {
+    height: 20px;
+    position: absolute;
+    left: 3px;
+    font-size: 14px;
+    font-family: "Verdana", Geneva, sans-serif;
+}
+
+#equation_area {
+    background-color:white;
+    overflow: auto;
+    border: 1px solid;
+    padding-top: 5px;
+}
+
+#equation_area, #variable_list, #command_history {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    top: 20px;
+}
+
+#command_panel {
+    float: left;
+    width:500px;
+    height:650px;
+    position: relative;
+}
+
+/* adding the bottom padding to equation_area doesn't work,
+ * so it is added here to ensure white space at bottom of equation area
+ * There might be a better way of forcing padding at the bottom of equation area
+*/
+#nappy {
+    padding: 0 0 30px 0;
+}
+
+#side_panel {
+    float: left;
+    width:300px;
+}
+
+#variable_panel {
+    height: 350px;
+    position: relative;
+}
+
+#variable_list {
+
+    background-color:white;
+    overflow: auto;
+    border: 1px solid;
+}
+
+
+#history_panel {
+    height: 300px;
+    position: relative;
+}
+
+#command_history {
+    background-color:white;
+    overflow: auto;
+    border: 1px solid;
+}
+
+#input_container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+#hidden_text {
+    overflow: hidden;
+    width: 100%;
+}
+
+
+
+textarea, pre {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+}
+
+.blah {
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+    /*background-color:orange;*/
+}
+
+.answers_line {
+
+}
+
+.double_arrow {
+    float:left;
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+    padding: 0 5px 0 5px;
+    border: 0px solid;
+    
+}
+
+.ans {
+
+    /*position: relative;*/
+    overflow: hidden;
+}
+
+#equation_line {
+    width: 100%;
+    /* margin: 5px 0 0 0; */
+}
+
+
+#expandingArea {
+    position: relative;
+    overflow: hidden;
+}
+
+#text_in, #expandingArea > pre {
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+  /* Make the text soft-wrap */
+    white-space: pre; /*pre-wrap;*/
+    /*word-wrap: break-word;*/
+}
+
+#text_in {
+  /* The border-box box model is used to allow
+   * padding whilst still keeping the overall width
+   * at exactly that of the containing element. */
+   
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+
+  /* Hide any scrollbars */
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #F0F0F0;
+  /* Remove WebKit user-resize widget */
+  resize: none;        
+}
+
+
+#expandingArea > pre {
+  display: block;
+  /* Hide the text; just using it for sizing */
+  visibility: hidden;
+}
+
+
+
